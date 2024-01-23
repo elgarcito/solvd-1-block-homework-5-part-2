@@ -1,4 +1,6 @@
-public class ConstructionProduct  {
+import abstractClasses.RawMaterial;
+
+public class ConstructionProduct extends RawMaterial {
 
 
     private double fraction;//How you divide it, for example price per 1 kg, 10 kg, etc
@@ -8,9 +10,8 @@ public class ConstructionProduct  {
 
     //Constructor
 
-    public ConstructionProduct(double fraction, boolean needLicense, int licenceNumberLength) {
-        this.fraction = fraction;
-        this.needLicense = needLicense;
+    public ConstructionProduct(String rawMaterialName, String rawMaterialDescription, String unitType) {
+        super(rawMaterialName, rawMaterialDescription, unitType);
     }
 
     //End constructor
@@ -41,5 +42,22 @@ public class ConstructionProduct  {
         this.licenceNumberLength = licenceNumberLength;
     }
     //end getter and setter
+
+    //Abstract method implementation
+    @Override
+    public boolean checkLicence(boolean needLicense,String licenceId,int licenceNumberLength){
+        if (needLicense){
+            if (licenceNumberLength ==licenceId.length()){
+                System.out.println("License is OK");
+                return true;
+            }else{
+                System.out.println("License is not OK");
+                return false;
+            }
+        }
+        System.out.println("no licence required");
+        return true;
+    }
+    //end Abstract method implementation
 
 }

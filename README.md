@@ -25,23 +25,29 @@ Besides that, we have the persons that interact with the store these are:
 3. BigCLient: at the moment, the store only works with big clients that are an small amount and are registered.
 
 ## Exercises and references:
-### 26/10/2023
 
-Create a class hierarchy. Topic for your hierarchy will be provided by your mentors.
-Requirements:
-* At least 10 classes
-* All classes must contain properties (minimum 1)
-* At least 5 private properties (in total, in any classes)
-* All private variables must have getters and setters.
-* All classes should have at least one custom constructor
-* Create separate class with main() which will instantiate objects of implemented classes.
+### 31/10/2023
+
+Extend your previous homework with next features:
+* Use polymorphism with at least one abstract class.
+* Create and override at least one abstract method.
+* Use protected modifier at least 5 times.
+* Override methods from class Object (toString(), hashcode(), equals()) for at least 3 classes from the hierarchy.
 
 ### Solution
-The created classes were:
-* Products: ElectricProduct, GardenProduct, GasProduct, ConstructionProduct, HandTool,
-  HouseholdItem, WaterProduct
-* Human beings: Employee, Supplier, BigClient
+Created the abstract classes:
+* Product: All products(ElectricProduct,GasProduct,etc) extends Product
+* Person: All human beings (Employee, Supplier) extends Person
+* RawMaterial: ConstructionProduct extend RawMaterial
 
-All classes created have the requirements needed.
-In the Main class, we can se an implementation for each class
-using the custom constructor.
+In Person Abstract Class we have the abstract method:
+* public abstract checkAge(int personAge);
+* It is overridden in Employee and Supplier
+
+The 5 protected modifiers are used in the HandTool class for each field.
+
+The polymorphism example is done with the abstract method
+checkAge() from the Person abstract class in the classes BigClient, Employee and Supplier.
+We can find this example in the main method.
+
+Now that inheritance is applied, it is possible to find in the main method a new implementation for each class.

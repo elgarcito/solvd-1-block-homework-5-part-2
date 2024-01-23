@@ -1,22 +1,23 @@
 
+import abstractClasses.Product;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ElectricProduct {
+public class ElectricProduct extends Product {
     private double voltageRate;//The voltage admitted for the product in V (volts)
     private double power;//The power consumed for the product in kW (kiloWatt)
-    private String electricId;//The id of the product
+    private String electricId;//// the unique id for that product
 
 
 
     //Constructor
 
-    public ElectricProduct(double voltageRate, double power, String electricId) {
-        this.voltageRate = voltageRate;
-        this.power = power;
-        this.electricId = electricId;
+    public ElectricProduct(String productName,String productDescription){
+        super(productName,productDescription);
+        this.setElectricId();
     }
 
     //End constructor
@@ -42,11 +43,37 @@ public class ElectricProduct {
         return electricId;
     }
 
-    public void setElectricId(String electricId) {
-        this.electricId = electricId;
+    public void setElectricId() {
+        this.electricId = "EL"+this.hashCode();
     }
 
     //End Getters and setters
+
+    //Override equal, hashcode and toString methods.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ElectricProduct)) return false;
+        ElectricProduct that = (ElectricProduct) o;
+        return Objects.equals(electricId, that.electricId);
+    }
+
+    @Override
+    public int hashCode() {
+        if(Objects.hash(this.getProductName(),this.getProductDescription())<0){
+            return Objects.hash(this.getProductName(),this.getProductDescription())*-1;
+        }
+        return Objects.hash(this.getProductName(),this.getProductDescription());
+    }
+
+    @Override
+    public String toString(){
+        return "The resume name of the product is:\n"+this.getProductName()
+                +"\nThe full description is:\n"+this.getProductDescription();
+    }
+
+
+    //end override equal, hashcode and toString methods.
 
 }
 

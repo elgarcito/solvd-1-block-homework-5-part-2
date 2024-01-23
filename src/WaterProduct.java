@@ -1,12 +1,12 @@
-public class WaterProduct {
+import abstractClasses.Product;
+
+public class WaterProduct extends Product {
 
     double maxPressure;//Max pressure of the water component
     //Constructor
-
-    public WaterProduct(double maxPressure) {
-        this.maxPressure = maxPressure;
+    public WaterProduct(String productName,String productDescription){
+        super(productName,productDescription);
     }
-
     //End constructor
 
     //Getter and setter

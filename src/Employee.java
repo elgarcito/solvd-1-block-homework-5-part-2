@@ -1,9 +1,11 @@
+import abstractClasses.Person;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 
-public class Employee  {
+public class Employee extends Person {
 
     private String personalId;//The personal id of the worker
     private double costPerHour;//The pay per hour of the worker
@@ -13,13 +15,10 @@ public class Employee  {
 
     //Constructor
 
-    public Employee(String personalId, double costPerHour, String speciality) {
-        this.personalId = personalId;
-        this.costPerHour = costPerHour;
-        this.speciality = speciality;
+    public Employee(String personName, String personEmail, String phoneNumber,String speciality) {
+        super(personName, personEmail, phoneNumber);
+        this.speciality=speciality;
     }
-
-
     //End constructor
 
     //Getter and setters
@@ -56,5 +55,18 @@ public class Employee  {
         this.employeeAge = employeeAge;
     }
     //end getters and setters
+
+    //Abstract method implementation
+    @Override
+    public void checkAge(){
+        if (this.getEmployeeAge()<21){
+            System.out.println("You must be older than 18 years to be an employee.");
+            if (this.employeeAge==0){
+                System.out.println("Please set the employee age.");
+            }
+        }else {
+            System.out.println("You can be an employee.");
+        }
+    }
 
 }

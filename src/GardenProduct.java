@@ -1,20 +1,24 @@
 
+import abstractClasses.Product;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 
-public class GardenProduct  {
+public class GardenProduct extends Product {
 
     private boolean itsPoison;//Check if the product is poison or not
-    private String gardenId;//The id of the product
+    private String gardenId;// the unique id for that product
+
     //constructor
+    public GardenProduct(String productName, String productDescription,boolean itsPoison){
+        super(productName,productDescription);
+        this.itsPoison=itsPoison;
+        this.gardenId=setGardenId();
 
-    public GardenProduct(boolean itsPoison, String gardenId) {
-        this.itsPoison = itsPoison;
-        this.gardenId = gardenId;
+
     }
-
     //End constructor
 
     //getter and setter
@@ -31,11 +35,44 @@ public class GardenProduct  {
         return gardenId;
     }
 
-    public void setGardenId(String gardenId) {
-        this.gardenId = gardenId;
+    public String setGardenId() {
+        int a= this.hashCode();
+        if (this.hashCode()<0){
+            a*=-1;
+        }
+        return this.gardenId = "GR"+a;
     }
 
     //end getter and setter
+
+    //Override equal, hashcode and toString methods.
+    @Override
+    public String toString(){
+        String poison;
+        if (this.itsPoison){
+            poison="poisonous";
+        }else {
+            poison="non poisonous";}
+
+        return  "The resume name of the product is:\n"+this.getProductName()
+                +"\nThe full description is:\n"+this.getProductDescription()
+                +"\nIt is a "+poison+" product";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GardenProduct)) return false;
+        GardenProduct that = (GardenProduct) o;
+        return itsPoison == that.itsPoison && Objects.equals(gardenId, that.gardenId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getProductName(), this.getProductDescription());
+    }
+
+    //end override equal, hashcode and toString methods.
 
 
 
