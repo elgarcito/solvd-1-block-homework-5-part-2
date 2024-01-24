@@ -19,6 +19,8 @@ Supplier: the one that sells the product.
 Client: the one that buys the product.
  */
 
+import finalClasess.PayingRates;
+
 public class Main {
     public static void main(String[] args) {
         //Instantiations of the different implemented classes after the implementation of abstract
@@ -31,17 +33,6 @@ public class Main {
         Supplier rinoMax= new Supplier("Jason Krueger","jason@gmail.com","+12812516","sand");
         Employee carlosRusso = new Employee("carlos Russo", "123@gmail.com", "12345678", "Deposit");
         Employee joseAntonio = new Employee("Jose Antonio", "123@gmail.com", "12345678", "seller");
-
-        //Polymorphism with Person abstract class example
-        rinoMax.setSupplierAge(21);
-        bigClient.setBigClientAge(60);
-        carlosRusso.setEmployeeAge(30);
-        rinoMax.checkAge();
-        System.out.println();
-        bigClient.checkAge();
-        System.out.println();
-        carlosRusso.checkAge();
-        System.out.println();
 
         //Products
         ConstructionProduct sand = new ConstructionProduct("Sand", "White sand", "Tn");
@@ -76,5 +67,53 @@ public class Main {
         HandTool handSaw=new HandTool("Hand saw","Small hand saw");
         HouseholdItem broom =new HouseholdItem("Big broom","Industrial boom");
         WaterProduct pump1=new WaterProduct("Excelsior pump","20 hp power pump");
+
+        //Polymorphism with Person abstract class in BigClient, Employee and Supplier classes example
+        rinoMax.setSupplierAge(21);
+        bigClient.setBigClientAge(60);
+        carlosRusso.setEmployeeAge(30);
+        rinoMax.checkAge();
+        System.out.println();
+        bigClient.checkAge();
+        System.out.println();
+        carlosRusso.checkAge();
+        System.out.println();
+
+        //Polymorphism with Available, Costable, Priceable, Sellable, Stockable and TransactionDateable interfaces
+        //implemented in classes ElectricProduct and GasProduct
+        lightBulb.setStock(20);
+        gasBurner.setStock(10);
+        //Available interface
+        lightBulb.checkAvailability(10);
+        gasBurner.checkAvailability(5);
+        //Costable interface
+        double lightBulbCost= lightBulb.defineCost(10.0,1,1);
+        double gasBurnerCost= gasBurner.defineCost(10.0,1,1);
+        //Priceable interface
+        lightBulb.definePrice(lightBulbCost,10);
+        gasBurner.definePrice(gasBurnerCost,10);
+        //Sellable interface
+        lightBulb.removeStockDueSell(5);
+        gasBurner.removeStockDueSell(1);
+        //TransactionDateable.java
+        lightBulb.transactionDate();
+        gasBurner.transactionDate();
+
+        //Create final class, method, variable
+        //Final Class
+        PayingRates payingRates=new PayingRates();
+        //Final method
+        payingRates.showRates();
+        //Final variables
+        payingRates.getOwnerRate();
+        payingRates.getSellerRate();
+        payingRates.getDepositRate();
+
+        //Create a static block, method, variable
+        //Static block in ElectricProduct class
+        //Static method
+        ElectricProduct.showAmountOfElectricProducts();
+        //Static variable
+        int electricProductCounter = ElectricProduct.electricProductCounter;
     }
 }

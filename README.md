@@ -1,5 +1,5 @@
 # hardware store
-Progresive exercises of QA automation training, using maven and git.
+Progressive exercises of QA automation training, using maven and git.
 
 ## Project description:
 In this project, we have a hardware store that sells different products.
@@ -9,7 +9,7 @@ In this project, we have a hardware store that sells different products.
 </p>
 
 We represent this product using classes.
-We can see the classes and some examples of the kind of product that they are going to content:
+We can see the classes and some examples of products that they are going to content:
 1. ConstructionProduct: nails, screws, cement, sand etc. we sell it by it units, for ex.
    10 kg of sand.
 2. ElectricProduct: cables, electric tape, socket outlet,power drills, hole puncher, etc.
@@ -22,32 +22,35 @@ We can see the classes and some examples of the kind of product that they are go
 Besides that, we have the persons that interact with the store these are:
 1. Employee: these are the employees of the store and could be: seller, deposit or owner
 2. Supplier: the one that sells us the products
-3. BigCLient: at the moment, the store only works with big clients that are an small amount and are registered.
+3. BigClient: at the moment, the store only works with big clients that are an small amount and are registered.
 
 ## Exercises and references:
 
-### 31/10/2023
+### 02/11/2023
 
 Extend your previous homework with next features:
-* Use polymorphism with at least one abstract class.
-* Create and override at least one abstract method.
-* Use protected modifier at least 5 times.
-* Override methods from class Object (toString(), hashcode(), equals()) for at least 3 classes from the hierarchy.
+* Add 5 interfaces
+* Use polymorphism with the abstract class and interface from the hierarchy
+* Create final class, method, variable.
+* Create a static block, method, variable
 
 ### Solution
-Created the abstract classes:
-* Product: All products(ElectricProduct,GasProduct,etc) extends Product
-* Person: All human beings (Employee, Supplier) extends Person
-* RawMaterial: ConstructionProduct extend RawMaterial
+Created the 5 interfaces :
+* Selleable, Priceable, Costable, Available,TransactionDateable
 
-In Person Abstract Class we have the abstract method:
-* public abstract checkAge(int personAge);
-* It is overridden in Employee and Supplier
+These interfaces were implemented in the classes ElectricProduct and GasProduct.
+Polymorphism for these interfaces and for the abstract classes could be seen in the main method examples.
 
-The 5 protected modifiers are used in the HandTool class for each field.
+Created the final:
+* Class the finalClasses package the PayingRates.java class
+* Method: showRates() inside PayingRates class
+* Variables: inside PayingRates class: SELLER_RATE, DEPOSIT_RATE, OWNER_RATE.
 
-The polymorphism example is done with the abstract method
-checkAge() from the Person abstract class in the classes BigClient, Employee and Supplier.
-We can find this example in the main method.
+The implementation could be seen in the main method example.
 
-Now that inheritance is applied, it is possible to find in the main method a new implementation for each class.
+Created the static:
+* Block: inside the ElectricProduct class this restart to zero the counter of created product each initialization.
+* Method: inside the ElectricProduct the showAmountOfElectricProducts() method.
+* Variable: productCounter used in ElectricProduct.
+
+The implementation could be seen in the main method example.

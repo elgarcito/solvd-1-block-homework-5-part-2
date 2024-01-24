@@ -1,16 +1,12 @@
 import abstractClasses.Person;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Function;
-
 public class Employee extends Person {
 
     private String personalId;//The personal id of the worker
     private double costPerHour;//The pay per hour of the worker
     private String speciality;//What kind of job the worker does
     private int employeeAge;//how old is the employee
+
 
 
     //Constructor
@@ -68,5 +64,6 @@ public class Employee extends Person {
             System.out.println("You can be an employee.");
         }
     }
+
 
 }

@@ -1,8 +1,5 @@
 package abstractClasses;
 
-import java.time.LocalDateTime;
-import java.util.function.*;
-
 //Here we have the kind of product that tou can use to make another, for example, sand, gasoline
 //or all the kind of product that you don't sell by unit
 public abstract class RawMaterial {

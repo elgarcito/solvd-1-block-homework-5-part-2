@@ -51,4 +51,6 @@ public abstract class Person {
     public abstract void checkAge();
     //end Abstract method
 
+    //Show the rates per hour according to the type of employee
+
 }
