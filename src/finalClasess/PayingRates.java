@@ -1,5 +1,10 @@
 package finalClasess;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public final class PayingRates {
+    private static final Logger LOGGER= LogManager.getLogger(PayingRates.class);
 
     //How much you pay per hour to a category of employee
     public static int productCounter;
@@ -28,6 +33,6 @@ public final class PayingRates {
                 "Seller: "+ getSellerRate() +" USD/h"+
                 "\nDeposit employee: "+getDepositRate()+" USD/h"+
                 "\nOwner: "+getOwnerRate()+" USD/h";
-        System.out.println(message);
+        LOGGER.info(message);
     }
 }

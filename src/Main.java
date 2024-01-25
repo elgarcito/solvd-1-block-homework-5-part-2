@@ -19,17 +19,25 @@ Supplier: the one that sells the product.
 Client: the one that buys the product.
  */
 
+import exceptions.AutoCloseableNoResource;
 import finalClasess.PayingRates;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class Main {
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+    private static final Logger LOGGER= LogManager.getLogger(Main.class);
     public static void main(String[] args) {
         //Instantiations of the different implemented classes after the implementation of abstract
 
-        System.out.println("Hello and welcome to hardware store!! \n");
+        LOGGER.info("Hello and welcome to hardware store!! \n");
         //classes
         //humans or companies
         BigClient bigClient=new BigClient("Edward Cullen","Edward@gmail.com","+224586634");
-        System.out.println(bigClient.toString()+"\n");
+        LOGGER.info(bigClient.toString()+"\n");
         Supplier rinoMax= new Supplier("Jason Krueger","jason@gmail.com","+12812516","sand");
         Employee carlosRusso = new Employee("carlos Russo", "123@gmail.com", "12345678", "Deposit");
         Employee joseAntonio = new Employee("Jose Antonio", "123@gmail.com", "12345678", "seller");
@@ -40,17 +48,17 @@ public class Main {
         //Creating the first Electric product
         ElectricProduct lightBulb = new ElectricProduct("Light bulb 2", "led light bulb");
         //Getting the product name
-        System.out.println(lightBulb.toString());
+        LOGGER.info(lightBulb.toString());
         //setting the power field
         lightBulb.setPower(10);
         //getting the power field
-        System.out.println("The lightBulb power is: "+lightBulb.getPower()+"kW\n");
+        LOGGER.info("The lightBulb power is: "+lightBulb.getPower()+"kW\n");
         //Creating the second Electric product
         ElectricProduct lightBulb2 = new ElectricProduct("Light bulb 1", "led light bulb");
         //getting the lightBulb2 id that used hashCode override to create a unique id
-        System.out.println(lightBulb2.toString()+"\n");
+        LOGGER.info(lightBulb2.toString()+"\n");
         //Checking if lightBulb is equal to lightBulb2 to implement hashCode and equals override
-        System.out.println("Electric products are equals?: "+lightBulb.equals(lightBulb2)+"\n");
+        LOGGER.info("Electric products are equals?: "+lightBulb.equals(lightBulb2)+"\n");
 
 
         GardenProduct gardenScissors = new GardenProduct("Big scissors", "Big size scissors to cut grass", false);
@@ -59,10 +67,10 @@ public class Main {
 
         //Creating a new gas Product
         GasProduct gasBurner = new GasProduct("Gas Burner", "Gas kitchen burner");
-        System.out.println(gasBurner.toString()+"\n");
+        LOGGER.info(gasBurner.toString()+"\n");
         GasProduct gasBurner2 = new GasProduct("Gas Burner", "Gas kitchen burner");
         gasBurner2.setStock(8);
-        System.out.println("Gas burner stock is: "+gasBurner2.getStock());
+        LOGGER.info("Gas burner stock is: "+gasBurner2.getStock());
 
         HandTool handSaw=new HandTool("Hand saw","Small hand saw");
         HouseholdItem broom =new HouseholdItem("Big broom","Industrial boom");
@@ -77,6 +85,7 @@ public class Main {
         bigClient.checkAge();
         System.out.println();
         carlosRusso.checkAge();
+        System.out.println();
         System.out.println();
 
         //Polymorphism with Available, Costable, Priceable, Sellable, Stockable and TransactionDateable interfaces
@@ -115,5 +124,38 @@ public class Main {
         ElectricProduct.showAmountOfElectricProducts();
         //Static variable
         int electricProductCounter = ElectricProduct.electricProductCounter;
+
+
+        //Try-catch handled in two ways and checking each exception
+        //Created an employee with all wrong data to throw all exceptions
+        Employee jackLalein=new Employee("jack 123 my name is too long","jack@gmail.com","12345678","seller");
+        jackLalein.checkEmployeeData();
+        jackLalein.setPersonName("jack lalein1");
+        System.out.println();
+        jackLalein.checkEmployeeData();
+        System.out.println();
+        jackLalein.setPersonName("jack lalein");
+        jackLalein.setPersonEmail("jack@momo");
+        jackLalein.checkEmployeeData();
+        System.out.println();
+        jackLalein.setPersonEmail("jack@gmail.com");
+        jackLalein.setPhoneNumber("123456789");
+        jackLalein.checkEmployeeData();
+        System.out.println();
+        jackLalein.setPhoneNumber("12345678");
+        jackLalein.setSpeciality("cleaner");
+        jackLalein.checkEmployeeData();
+        System.out.println();
+        jackLalein.setSpeciality("seller");
+        //All Employee correct data result
+        jackLalein.checkEmployeeData();
+        System.out.println();
+        //Try-catch with resource example
+        try (AutoCloseable ac = new AutoCloseableNoResource()) {
+            LOGGER.info("Inside try block to test Try catch with exception");
+        } catch (Exception e) {
+            LOGGER.error("An error occurred: " + e);
+        }
+        System.out.println();
     }
 }

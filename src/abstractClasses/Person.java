@@ -4,7 +4,11 @@ This method is going to have the information and method that a person should hav
 Its mandatory to add a person that it has all the data
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public abstract class Person {
+    private static final Logger LOGGER= LogManager.getLogger(Person.class);
     private String personName;//the person full name and surname
     private String personEmail;//the person email
     private String phoneNumber;//the person phone number

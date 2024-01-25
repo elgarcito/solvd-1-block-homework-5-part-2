@@ -1,11 +1,14 @@
 import abstractClasses.Product;
 import createdInterfaces.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class GasProduct extends Product implements Available, Costable, Priceable, Sellable, TransactionDateable {
+    private static final Logger LOGGER= LogManager.getLogger(GasProduct.class);
     private String typeOfGas;// compressed gas or natural gas
     private double gasPressure;// max gas pressure for that product
 
@@ -53,7 +56,7 @@ public class GasProduct extends Product implements Available, Costable, Priceabl
     public int hashCode(){
         int code= Objects.hash(getProductName(),getProductDescription());
         if (code<0){
-            return code=code*-1;
+            return code*-1;
         }
         return code;
     }
@@ -78,10 +81,10 @@ public class GasProduct extends Product implements Available, Costable, Priceabl
     public boolean checkAvailability(int stock) {
         //You consider that your minimum stock must be 10 units if this gas product
         if (this.getStock() >10){
-            System.out.println("You have enough stock to sell this gas product, your stock is: "+this.getStock()+" units\n");
+            LOGGER.info("You have enough stock to sell this gas product, your stock is: "+this.getStock()+" units\n");
             return true;
         }else {
-            System.out.println("You have not enough stock to sell this gas product, your stock is: "+this.getStock()+" units"+
+            LOGGER.warn("You have not enough stock to sell this gas product, your stock is: "+this.getStock()+" units"+
                     " the minimum amount allowed is 10 units\n");
             return false;
         }
@@ -91,9 +94,9 @@ public class GasProduct extends Product implements Available, Costable, Priceabl
     public double defineCost(double supplierCost,double transportCost,double anotherCost){
         // the gas transport has a discount
         double transportDiscount=2;
-        System.out.println("The gas transport has a discount of: "+transportDiscount+" usd");
+        LOGGER.info("The gas transport has a discount of: "+transportDiscount+" usd");
         double cost=supplierCost+(transportCost-transportDiscount)+anotherCost;
-        System.out.println("The final cost of: "+this.getProductName()+" is "+cost+" usd");
+        LOGGER.info("The final cost of: "+this.getProductName()+" is "+cost+" usd");
         return cost;
     }
 
@@ -102,9 +105,9 @@ public class GasProduct extends Product implements Available, Costable, Priceabl
         DecimalFormat df = new DecimalFormat("0.00");
         //An extra tax that only applies to gas products
         double gasExtraTax=1.0;
-        System.out.println("The gas sell has an extra tax of: "+gasExtraTax+" usd");
+        LOGGER.info("The gas sell has an extra tax of: "+gasExtraTax+" usd");
         double price=cost*(1+winPercentage/100)+gasExtraTax;
-        System.out.println("The final price of: "+this.getProductName()+" is "+df.format(price)+" usd");
+        LOGGER.info("The final price of: "+this.getProductName()+" is "+df.format(price)+" usd");
         return price;
     }
     @Override
@@ -113,9 +116,9 @@ public class GasProduct extends Product implements Available, Costable, Priceabl
         if(thereIsStock && amountSold<=this.getStock()){
             int newStock =this.getStock()-amountSold;
             this.setStock(newStock);
-            System.out.println("Your new stock of this gas related product is: "+newStock+".\n");
+            LOGGER.info("Your new stock of this gas related product is: "+newStock+".\n");
         }else{
-            System.out.println("You can't sell that amount of this gas product, you need to have at least: \n" +
+            LOGGER.warn("You can't sell that amount of this gas product, you need to have at least: \n" +
                     10+" units in your stock.\n");
         }
     }
@@ -123,7 +126,7 @@ public class GasProduct extends Product implements Available, Costable, Priceabl
     @Override
     public String transactionDate(){
         String dateWithoutFormat=LocalDate.now().toString();
-        System.out.println(dateWithoutFormat);
+        LOGGER.info(dateWithoutFormat);
         return dateWithoutFormat;
     }
 

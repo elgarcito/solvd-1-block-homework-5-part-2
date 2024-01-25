@@ -1,9 +1,13 @@
 package abstractClasses;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /*
 This abstract class is going to have the basic field that a product should have and methods that it should contain
  */
 public abstract class Product {
+    private static final Logger LOGGER= LogManager.getLogger(Product.class);
     private String productName;// resume of the product name
     private String productDescription;//Full description of the product
     private double productWeight;//The weight of the product

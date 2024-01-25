@@ -1,10 +1,13 @@
 
 import abstractClasses.Product;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
 
 public class GardenProduct extends Product {
+    private static final Logger LOGGER= LogManager.getLogger(GardenProduct.class);
 
     private boolean itsPoison;//Check if the product is poison or not
     private String gardenId;// the unique id for that product

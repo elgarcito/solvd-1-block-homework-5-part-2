@@ -26,31 +26,41 @@ Besides that, we have the persons that interact with the store these are:
 
 ## Exercises and references:
 
-### 02/11/2023
+### 07/11/2023
 
 Extend your previous homework with next features:
-* Add 5 interfaces
-* Use polymorphism with the abstract class and interface from the hierarchy
-* Create final class, method, variable.
-* Create a static block, method, variable
+* Create 5 custom exceptions.
+* Handle exceptions in 2 ways
+* Use try-catch with resources.
+* Log messages to the console, file
 
 ### Solution
-Created the 5 interfaces :
-* Selleable, Priceable, Costable, Available,TransactionDateable
+Create the 5 custom exceptions added in the package exceptions. All of them
+are used in the Employee.java class.
+These are:
+* PhoneNumberException: Threw if the phone number has more digits.
+The throwPhoneNumberException(String employeePhoneNumber) uses it.
+* NumberInNamesException: Threw if the name has numbers.
+The throwNameException(String employeeName) uses it.
+* LongEmployeeNameException: Threw if the name is too long.
+* The throwNameException(String employeeName) uses it.
+* EmployeeSpecialityException: Threw if the speciality doesn't exist. 
+The throwEmployeeSpecialityException(String employeeSpeciality) uses it.
+* EmailException: Threw if the email format is wrong.
+The throwEmailException(String employeeEmail) uses it.
 
-These interfaces were implemented in the classes ElectricProduct and GasProduct.
-Polymorphism for these interfaces and for the abstract classes could be seen in the main method examples.
-
-Created the final:
-* Class the finalClasses package the PayingRates.java class
-* Method: showRates() inside PayingRates class
-* Variables: inside PayingRates class: SELLER_RATE, DEPOSIT_RATE, OWNER_RATE.
-
+The method checkEmployeeData() in Employee class uses all these methods inside a
+try-catch block to have exceptions handled in 2 ways.
 The implementation could be seen in the main method example.
 
-Created the static:
-* Block: inside the ElectricProduct class this restart to zero the counter of created product each initialization.
-* Method: inside the ElectricProduct the showAmountOfElectricProducts() method.
-* Variable: productCounter used in ElectricProduct.
-
+To use the try-catch with resources, we created the AutoClosableNoResource.java class
+in exception package.
+This implements the Autocloseable interface and overrides the close method.
 The implementation could be seen in the main method example.
+
+Log4j was implemented. The configuration file is in the main folder with the name:
+* log4j2.xml
+
+The configuration saves all warn and error messages in the HardwareStore.log.
+All System.out.println() has been replaced with LOGGER.info(),LOGGER.warn()
+or LOGGER.error().The only ones that are keep are the used to add white lines.

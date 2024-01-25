@@ -1,7 +1,10 @@
 import abstractClasses.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 //We only save the data of the big clients
 public class BigClient extends Person {
+    private static final Logger LOGGER= LogManager.getLogger(BigClient.class);
     private int bigClientAge;//The amount of time that the client is working with us
     private String regularBuy;//The type of product that the big client buys
 
@@ -34,12 +37,12 @@ public class BigClient extends Person {
     @Override
     public void checkAge(){
         if (this.getBigClientAge()<21){
-            System.out.println("You must be older than 21 years to form part of this category.");
+            LOGGER.info("You must be older than 21 years to form part of this category.");
             if (this.getBigClientAge()==0){
-                System.out.println("Please set the big client age.");
+                LOGGER.info("Please set the big client age.");
             }
         }else {
-            System.out.println("You can be a big costumer.");
+            LOGGER.info("You can be a big costumer.");
         }
     }
     //End abstract method override

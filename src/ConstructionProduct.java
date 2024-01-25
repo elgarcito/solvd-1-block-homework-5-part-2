@@ -1,12 +1,12 @@
 import abstractClasses.RawMaterial;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ConstructionProduct extends RawMaterial {
-
-
+    private static final Logger LOGGER= LogManager.getLogger(ConstructionProduct.class);
     private double fraction;//How you divide it, for example price per 1 kg, 10 kg, etc
     private boolean needLicense;// If you need a license to buy this product, for example, gasoline.
     private int licenceNumberLength;// if you need a license the amount of numbers in it
-
 
     //Constructor
 
@@ -48,14 +48,14 @@ public class ConstructionProduct extends RawMaterial {
     public boolean checkLicence(boolean needLicense,String licenceId,int licenceNumberLength){
         if (needLicense){
             if (licenceNumberLength ==licenceId.length()){
-                System.out.println("License is OK");
+                LOGGER.info("License is OK");
                 return true;
             }else{
-                System.out.println("License is not OK");
+                LOGGER.info("License is not OK");
                 return false;
             }
         }
-        System.out.println("no licence required");
+        LOGGER.info("no licence required");
         return true;
     }
     //end Abstract method implementation

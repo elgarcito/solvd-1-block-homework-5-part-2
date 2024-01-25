@@ -1,9 +1,12 @@
 package abstractClasses;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 //Here we have the kind of product that tou can use to make another, for example, sand, gasoline
 //or all the kind of product that you don't sell by unit
 public abstract class RawMaterial {
-
+    private static final Logger LOGGER= LogManager.getLogger(RawMaterial.class);
     private String rawMaterialName;
     private String rawMaterialDescription;
     private String unitType;//For example, a ton, kg, lt

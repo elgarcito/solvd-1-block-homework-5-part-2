@@ -1,6 +1,9 @@
 import abstractClasses.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Supplier extends Person {
+    private static final Logger LOGGER= LogManager.getLogger(Supplier.class);
     private String productSupplied;//What kind of product supplies
     private int supplierAge;
 
@@ -35,12 +38,12 @@ public class Supplier extends Person {
     @Override
     public void checkAge(){
         if (this.getSupplierAge()<21){
-            System.out.println("You must be older than 21 years to be a supplier.");
+            LOGGER.warn("You must be older than 21 years to be a supplier.");
             if (this.getSupplierAge()==0){
-                System.out.println("Please set the supplier age.");
+                LOGGER.warn("Please set the supplier age.");
             }
         }else {
-            System.out.println("You can be a big supplier.");
+            LOGGER.info("You can be a big supplier.");
         }
     }
     //End abstract method implementation
