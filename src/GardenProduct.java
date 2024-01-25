@@ -3,7 +3,9 @@ import abstractClasses.Product;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 public class GardenProduct extends Product {
@@ -11,6 +13,7 @@ public class GardenProduct extends Product {
 
     private boolean itsPoison;//Check if the product is poison or not
     private String gardenId;// the unique id for that product
+    private static Set<GardenProduct> gardenProductHashSetList=new HashSet<>();//List of garden products
 
     //constructor
     public GardenProduct(String productName, String productDescription,boolean itsPoison){
@@ -43,7 +46,6 @@ public class GardenProduct extends Product {
         }
         return this.gardenId = "GR"+a;
     }
-
     //end getter and setter
 
     //Override equal, hashcode and toString methods.
@@ -74,6 +76,17 @@ public class GardenProduct extends Product {
     }
 
     //end override equal, hashcode and toString methods.
+
+    //List methods
+    public static HashSet<GardenProduct> getCopyOfGardenProductHashSetList() {
+        return new HashSet<>(GardenProduct.gardenProductHashSetList);
+    }
+
+    public static void addGardenProductToHashSetList(GardenProduct gardenProduct){
+        GardenProduct.gardenProductHashSetList.add(gardenProduct);
+    }
+
+    //End list methods
 
 
 

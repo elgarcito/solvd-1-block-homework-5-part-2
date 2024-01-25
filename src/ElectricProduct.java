@@ -6,6 +6,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class ElectricProduct extends Product implements Available, Costable, Priceable, Sellable, TransactionDateable {
@@ -17,8 +20,9 @@ public class ElectricProduct extends Product implements Available, Costable, Pri
     private static final Logger LOGGER= LogManager.getLogger(ElectricProduct.class);
     private double voltageRate;//The voltage admitted for the product in V (volts)
     private double power;//The power consumed for the product in kW (kiloWatt)
-    private String electricId;//// the unique id for that product
-    static int electricProductCounter;
+    private String electricId;// The unique id for that product
+    static int electricProductCounter;// The number of products created
+    private static ArrayList<ElectricProduct> electricProductArrayList=new ArrayList<>(); //List of employees created
 
     //Constructor
 
@@ -136,6 +140,16 @@ public class ElectricProduct extends Product implements Available, Costable, Pri
         LOGGER.info("The amount of electric products is: "+ElectricProduct.electricProductCounter);
     }
     //End Static method
+
+    //List methods
+    public static ArrayList<ElectricProduct> getCopyOfElectricProductArrayList() {
+        return new ArrayList<ElectricProduct>(ElectricProduct.electricProductArrayList);
+    }
+
+    public static void addElectricProductToArrayList(ElectricProduct electricProduct){
+        ElectricProduct.electricProductArrayList.add(electricProduct);
+    }
+    //End list methods
 
 
 }

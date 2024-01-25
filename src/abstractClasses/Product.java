@@ -3,6 +3,8 @@ package abstractClasses;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+
 /*
 This abstract class is going to have the basic field that a product should have and methods that it should contain
  */
@@ -57,4 +59,6 @@ public abstract class Product {
     }
 
     //end of getter and setters
+
+
 }

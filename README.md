@@ -26,41 +26,27 @@ Besides that, we have the persons that interact with the store these are:
 
 ## Exercises and references:
 
-### 07/11/2023
+### 09/11/2023
 
 Extend your previous homework with next features:
-* Create 5 custom exceptions.
-* Handle exceptions in 2 ways
-* Use try-catch with resources.
-* Log messages to the console, file
+* Add 5 collections to the hierarchy.
+* Create custom LinkedList with generic.
 
 ### Solution
-Create the 5 custom exceptions added in the package exceptions. All of them
-are used in the Employee.java class.
-These are:
-* PhoneNumberException: Threw if the phone number has more digits.
-The throwPhoneNumberException(String employeePhoneNumber) uses it.
-* NumberInNamesException: Threw if the name has numbers.
-The throwNameException(String employeeName) uses it.
-* LongEmployeeNameException: Threw if the name is too long.
-* The throwNameException(String employeeName) uses it.
-* EmployeeSpecialityException: Threw if the speciality doesn't exist. 
-The throwEmployeeSpecialityException(String employeeSpeciality) uses it.
-* EmailException: Threw if the email format is wrong.
-The throwEmailException(String employeeEmail) uses it.
+* The five collections are:
+1. electricProductArrayList in ElectricProduct class.
+2. employeeList in Employee class.
+3. gardenProductHashSetList in GardenProduct.
+4. householdItemArrayList in HouseHoldItem class.
+5. resumedEmployeeInformationList in Employee class.
 
-The method checkEmployeeData() in Employee class uses all these methods inside a
-try-catch block to have exceptions handled in 2 ways.
-The implementation could be seen in the main method example.
+All of these Lists only accept add a product operation.
+If you need access to the list, using the static method getCopy... 
+in each Class mentioned (Employee, HouseHoldItem, GardenProduct and ElectricProduct) 
+you get a copy of this list.
+This protects the modification of the original list. 
 
-To use the try-catch with resources, we created the AutoClosableNoResource.java class
-in exception package.
-This implements the Autocloseable interface and overrides the close method.
-The implementation could be seen in the main method example.
+The linked list activity is going to be in the repository:
+ * solvd-1-block-homework-5-part-2
 
-Log4j was implemented. The configuration file is in the main folder with the name:
-* log4j2.xml
-
-The configuration saves all warn and error messages in the HardwareStore.log.
-All System.out.println() has been replaced with LOGGER.info(),LOGGER.warn()
-or LOGGER.error().The only ones that are keep are the used to add white lines.
+I order to be more clear in the activities response

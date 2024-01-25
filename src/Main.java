@@ -19,10 +19,15 @@ Supplier: the one that sells the product.
 Client: the one that buys the product.
  */
 
+import abstractClasses.Product;
 import exceptions.AutoCloseableNoResource;
 import finalClasess.PayingRates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 
 public class Main {
@@ -74,6 +79,7 @@ public class Main {
 
         HandTool handSaw=new HandTool("Hand saw","Small hand saw");
         HouseholdItem broom =new HouseholdItem("Big broom","Industrial boom");
+        HouseholdItem broom1 =new HouseholdItem("Small broom","House boom");
         WaterProduct pump1=new WaterProduct("Excelsior pump","20 hp power pump");
 
         //Polymorphism with Person abstract class in BigClient, Employee and Supplier classes example
@@ -157,5 +163,33 @@ public class Main {
             LOGGER.error("An error occurred: " + e);
         }
         System.out.println();
+
+        //Collection examples
+        //ArrayList<Employees>
+        Employee.addEmployeeToArrayList(jackLalein);
+        Employee.addEmployeeToArrayList(joseAntonio);
+        ArrayList<Employee> employeeList=Employee.getCopyOfEmployeeArrayList();
+        LOGGER.info(employeeList.get(1).toString());
+        //HashSet<GardenProducts>
+        GardenProduct.addGardenProductToHashSetList(gardenScissors);
+        GardenProduct.addGardenProductToHashSetList(gardenScissors1);
+        HashSet<GardenProduct> gardenProductsListCopy=GardenProduct.getCopyOfGardenProductHashSetList();
+        LOGGER.info(gardenProductsListCopy.contains(gardenScissors));
+        //ArrayList<ElectricProducts>
+        ElectricProduct.addElectricProductToArrayList(lightBulb);
+        ElectricProduct.addElectricProductToArrayList(lightBulb2);
+        ArrayList<ElectricProduct>electricProductArrayList=ElectricProduct.getCopyOfElectricProductArrayList();
+        //ArrayList<HouseholdItem>
+        HouseholdItem.addHouseholdItemToArrayList(broom);
+        HouseholdItem.addHouseholdItemToArrayList(broom1);
+        ArrayList<HouseholdItem>householdItemsList=HouseholdItem.getCopyOfHouseholdItemArrayList();
+        //ArrayList<String> in Employee class
+        HashSet<String> employeesResumeInformation=Employee.getEmployeeResumeList();
+        Iterator<String> iterator=employeesResumeInformation.iterator();
+       while (iterator.hasNext()){
+           LOGGER.info(iterator.next()+"\n");
+       }
+
+
     }
 }

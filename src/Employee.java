@@ -3,6 +3,11 @@ import exceptions.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Employee extends Person {
     private static final Logger LOGGER= LogManager.getLogger(Employee.class);
 
@@ -10,7 +15,8 @@ public class Employee extends Person {
     private double costPerHour;//The pay per hour of the worker
     private String speciality;//What kind of job the worker does
     private int employeeAge;//how old is the employee
-
+    private static ArrayList<Employee> employeeList=new ArrayList<>();//The list that saves the Object employees
+    private static HashSet<String> resumedEmployeeInformationList=new HashSet<>();//List with only resumed information
 
 
     //Constructor
@@ -54,6 +60,8 @@ public class Employee extends Person {
     public void setEmployeeAge(int employeeAge) {
         this.employeeAge = employeeAge;
     }
+
+
     //end getters and setters
 
     //Abstract method implementation
@@ -125,5 +133,38 @@ public class Employee extends Person {
 
     }
     //end Try-catch methods
+
+
+    @Override
+    public String toString() {
+        return "Employee :" +
+                "name='" + this.getPersonName() + '\'' +
+                "personalId='" + personalId + '\'' +
+                ", speciality='" + speciality + '\'';
+    }
+
+    //List methods
+    public static ArrayList<Employee> getCopyOfEmployeeArrayList() {
+        return new ArrayList<Employee>(Employee.employeeList);
+    }
+    public static void addEmployeeToArrayList(Employee employee){
+        Employee.employeeList.add(employee);
+    }
+
+    //This method allows iterating in the employeeList and retrieving the names of the employees
+    public static HashSet<String> getEmployeeResumeList(){
+        for (Employee employee:Employee.getCopyOfEmployeeArrayList()) {
+            //System.out.println();
+            String resumedInfo="\nName: "+employee.getPersonName()+
+                    "\nSpeciality: "+ employee.getSpeciality()+
+                    "\nPhone number: "+employee.getPhoneNumber();
+            //Saving the resumed names in another string with arrays
+            Employee.resumedEmployeeInformationList.add(resumedInfo);
+        }
+        return Employee.resumedEmployeeInformationList;
+    }
+    //End List methods
+
+
 
 }
