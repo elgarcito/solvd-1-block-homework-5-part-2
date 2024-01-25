@@ -34,7 +34,7 @@ Extend your previous homework with next features:
 
 ### Solution
 
-The customLinkedList package was created and contains the CustomLinkedList.java
+The customlinkedlist package was created and contains the CustomLinkedList.java
 class.This class use generics and mimics the LinkedList<> of java.util.LinkedList in the followings
 methods:
 * printAllData(): Print every element in the list

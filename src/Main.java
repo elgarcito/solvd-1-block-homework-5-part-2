@@ -19,16 +19,9 @@ Supplier: the one that sells the product.
 Client: the one that buys the product.
  */
 
-import abstractClasses.Product;
-import customLinkedList.CustomLinkedList;
-import exceptions.AutoCloseableNoResource;
-import finalClasess.PayingRates;
+import customlinkedlist.CustomLinkedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 
 
 public class Main {

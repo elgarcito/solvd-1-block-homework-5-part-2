@@ -1,4 +1,4 @@
-package customLinkedList;
+package customlinkedlist;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
