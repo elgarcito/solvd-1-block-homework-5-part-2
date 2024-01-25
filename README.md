@@ -26,27 +26,24 @@ Besides that, we have the persons that interact with the store these are:
 
 ## Exercises and references:
 
-### 09/11/2023
+### 09/11/2023 Part-2
 
 Extend your previous homework with next features:
 * Add 5 collections to the hierarchy.
 * Create custom LinkedList with generic.
 
 ### Solution
-* The five collections are:
-1. electricProductArrayList in ElectricProduct class.
-2. employeeList in Employee class.
-3. gardenProductHashSetList in GardenProduct.
-4. householdItemArrayList in HouseHoldItem class.
-5. resumedEmployeeInformationList in Employee class.
 
-All of these Lists only accept add a product operation.
-If you need access to the list, using the static method getCopy... 
-in each Class mentioned (Employee, HouseHoldItem, GardenProduct and ElectricProduct) 
-you get a copy of this list.
-This protects the modification of the original list. 
+The customLinkedList package was created and contains the CustomLinkedList.java
+class.This class use generics and mimics the LinkedList<> of java.util.LinkedList in the followings
+methods:
+* printAllData(): Print every element in the list
+* addEndNode(T data): Method to add an element to the linked list
+* addFirstNode(T data): Add an element in the first node
+* deleteFirstNode(): Method to delete the first node
+* deleteMiddleNode(T data): With this method you delete a desired Middle Node
+* deleteLastNode(): Delete the last node of the list
+* deleteCustomLinkedList(): Delete the whole Customlinkedlist
 
-The linked list activity is going to be in the repository:
- * solvd-1-block-homework-5-part-2
-
-I order to be more clear in the activities response
+To be clear in the output, all previous responses have been deleted.
+The implementation of all these methods could be seen in the main method.
