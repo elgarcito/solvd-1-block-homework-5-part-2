@@ -1,4 +1,6 @@
-import abstractclasses.Person;
+package person;
+
+import abstract_classes.Person;
 import exceptions.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -135,7 +137,7 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee :" +
+        return "person.Employee :" +
                 "name='" + this.getPersonName() + '\'' +
                 "personalId='" + personalId + '\'' +
                 ", speciality='" + speciality + '\'';

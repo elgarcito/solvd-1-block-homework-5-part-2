@@ -10,19 +10,19 @@ In this project, we have a hardware store that sells different products.
 
 We represent this product using classes.
 We can see the classes and some examples of products that they are going to content:
-1. ConstructionProduct: nails, screws, cement, sand etc. we sell it by it units, for ex.
+1. products.ConstructionProduct: nails, screws, cement, sand etc. we sell it by it units, for ex.
    10 kg of sand.
-2. ElectricProduct: cables, electric tape, socket outlet,power drills, hole puncher, etc.
-3. HandTool: hammer, hand saw, etc.
-4. GardenProduct:shovel, plant pot, etc.
-5. HouseholdItem: kettle, broom, brush, etc.
-6. WaterProduct:water filter, water pump, etc.
-7. GasProduct: gas valve, etc.
+2. products.ElectricProduct: cables, electric tape, socket outlet,power drills, hole puncher, etc.
+3. products.HandTool: hammer, hand saw, etc.
+4. products.GardenProduct:shovel, plant pot, etc.
+5. products.HouseholdItem: kettle, broom, brush, etc.
+6. products.WaterProduct:water filter, water pump, etc.
+7. products.GasProduct: gas valve, etc.
 
 Besides that, we have the persons that interact with the store these are:
-1. Employee: these are the employees of the store and could be: seller, deposit or owner
-2. Supplier: the one that sells us the products
-3. BigClient: at the moment, the store only works with big clients that are an small amount and are registered.
+1. person.Employee: these are the employees of the store and could be: seller, deposit or owner
+2. person.Supplier: the one that sells us the products
+3. person.BigClient: at the moment, the store only works with big clients that are an small amount and are registered.
 
 ## Exercises and references:
 
@@ -34,7 +34,7 @@ Extend your previous homework with next features:
 
 ### Solution
 
-The customlinkedlist package was created and contains the CustomLinkedList.java
+The custom_linkedlist package was created and contains the CustomLinkedList.java
 class.This class use generics and mimics the LinkedList<> of java.util.LinkedList in the followings
 methods:
 * printAllData(): Print every element in the list
